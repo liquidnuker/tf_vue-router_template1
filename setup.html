@@ -1,0 +1,59 @@
+<!-- main.js -->
+<script>
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+
+import routerLinks from './links.vue'
+
+import Home from './Home.vue'
+import About from './About.vue'
+
+Vue.use(VueRouter)
+
+const routes = [{
+  path: '/',
+  component: Home
+}, {
+  path: '/about',
+  component: About
+}];
+
+const router = new VueRouter({
+  routes
+});
+
+new Vue({
+  el: '#app',
+  router,
+  render: h => h(routerLinks)
+})
+</script>
+
+<!-- links.vue -->
+<template>
+<div id="router-links">
+  <router-link to="/">Home</router-link>
+  <router-link to="/about">About</router-link>
+  <router-view></router-view>
+</div>
+</template>
+
+<!-- home.vue -->
+<template>
+  <div id="routes-home">
+    <p>Home</p>
+  </div>
+</template>
+
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+    </div>
+    <script src="dist/index.bundle.js"></script>
+  </body>
+</html>
